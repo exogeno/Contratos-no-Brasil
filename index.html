@@ -960,6 +960,21 @@
         map.on("layerremove", function(){
             resetLabels([layer_UnidadfederativadeBrasil_2,layer_Populao2020SaoPauloNorte_3,layer_Populao2020SaoPauloSur_4,layer_Populao2020Parana_5,layer_Populao2020Cear_6]);
         });
+        L.Control.Watermark = L.Control.extend({
+        onAdd: function(map) {
+        var img = L.DomUtil.create('img');
+        img.src = 'https://www.iadb.org/themes/custom/iadb/images/logos/logo-ES-01b.png';
+        img.style.width = '400px';
+        return img;
+        },
+        onRemove: function(map) {
+        // Nothing to do here
+        }
+        });
+        L.control.watermark = function(opts) {
+        return new L.Control.Watermark(opts);
+        }
+        L.control.watermark({ position: 'bottomleft' }).addTo(map); 
         </script>
     </body>
 </html>
